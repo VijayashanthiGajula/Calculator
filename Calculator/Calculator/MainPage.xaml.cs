@@ -57,6 +57,7 @@ namespace Calculator
             if ((cs == -1) || (cs == 1))
             {
                 var result = Math.Sqrt(N1);
+               // string V = "√" + N1;
                 this.output.Text = result.ToString();
                 N1 = result;
                 cs = -1;
@@ -85,14 +86,14 @@ namespace Calculator
             //if the current result is 0 in text box then we will direct the calculator to exclude 0 when pressing busttons
             if (this.output.Text == "0" || cs < 0)//at first current state is 1
             {
-                this.output.Text = "";//here the text value will be cleared when pressing button
+               // this.output.Text = "";//here the text value will be cleared when pressing button
 
                 if (cs < 0) //at first current value is 1 so this condition is excluded
                     cs *= -1;
             }
 
             this.output.Text += buttonPressedText;// this condition is called when current state is greater and text box will aquire the pressed 
-
+            string secNumber = buttonPressedText;
             double number;//if  we are going  to assign two dynamic number for a given variable using try parse method 
             if (double.TryParse(this.output.Text, out number))
             {
@@ -106,28 +107,29 @@ namespace Calculator
                     N2 = number;//it will be implemented as the number of current state changes i.e. 2
                 }
             }
+            else
+            {
+                N2 +=Convert.ToDouble(secNumber);//it will be implemented as the number of current state changes i.e. 2
+            }
         }
-
-     
-
         private void OnCalculate(object sender, EventArgs e)
         {
             if (cs == 2)
             {
                 var result = OperatorHelper.Calculate(N1, N2, myoperator);
-
                 this.output.Text = result.ToString();
                 N1 = result;
                 cs = -1;
             }
         }
-
         private void OnSelectOperator(object sender, EventArgs e)
         {
             cs = -2;
             Button button = (Button)sender;
             string buttonPressedText = button.Text;
             myoperator = buttonPressedText;
+            
+            this.output.Text += buttonPressedText;
         }
     }
 }

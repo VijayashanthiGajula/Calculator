@@ -28,7 +28,7 @@
     <Grid Padding="5,0" RowSpacing="5" ColumnSpacing="5" BackgroundColor="Snow" >
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
-           <RowDefinition Height="0.5*" />
+            <RowDefinition Height="0.5*" />
             <RowDefinition Height="0.5*" />
             <RowDefinition Height="0.5*" />
             <RowDefinition Height="0.5*" />
@@ -44,11 +44,13 @@
         </Grid.ColumnDefinitions>
 
 
-        <Label x:Name="output" FontSize="60"  FontAttributes="Bold"  Text="0"
+        <Label x:Name="output" FontSize="60"  FontAttributes="Bold"  Text="0"  Grid.Row="0"
               TextColor="Black" HorizontalTextAlignment="End" VerticalTextAlignment="Center"
               LineBreakMode="NoWrap" Grid.ColumnSpan="4" />
 
-        <Button Text="AC" Grid.Row="1" Grid.Column="0" Style="{StaticResource style}" TextColor="Gray" Clicked="OnClear" />
+        <Button Text="AC" Grid.Row="1" Grid.Column="0" 
+                Style="{StaticResource style}" TextColor="Gray"
+                Clicked="OnClear" />
         <Button Text="√" Grid.Row="1" Grid.Column="1" Style="{StaticResource style}"  TextColor="Gray" Clicked="OnSelectOperator"   />
         <Button Text="%" Grid.Row="1" Grid.Column="2" Style="{StaticResource style}" TextColor="Gray" Clicked="OnSelectOperator"   />
         <Button Text="÷" Grid.Row="1" Grid.Column="3"   TextColor="#EE7600" Clicked="OnSelectOperator" Style="{StaticResource style}"/>
@@ -71,7 +73,9 @@
         <Button Text="+" Grid.Row="4" Grid.Column="3" TextColor="#EE7600"  Clicked="OnSelectOperator" Style="{StaticResource style}" />
 
         <Button Text="0" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"    Clicked="OnSelectNumber" Style="{StaticResource style}"/>
-        <Button Text="=" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"   TextColor="#EE7600"   Clicked="OnCalculate"  Style="{StaticResource style}"/>
+        <Button Text="=" Grid.Row="5" Grid.Column="2"
+          Grid.ColumnSpan="2" TextColor="#EE7600" 
+          Clicked="OnCalculate"  Style="{StaticResource style}"/>
 
 
     </Grid>
